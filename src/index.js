@@ -3,15 +3,38 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { HashRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { mainRoutes } from './routes';
+import { Provider } from 'react-redux';
+import store from './store'
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Provider store={store}>
+    <Router>
+      <Switch>
+
+        {/**
+         * 以admin开头的路由都用APP组件来渲染页面
+         */}
+        <Route path="/admin" render={routeProps => <App {...routeProps} />}></Route>
+        {/**
+ * 循环配置路由
+ */}
+        {mainRoutes.map(route => {
+          return <Route key={route.path} {...route} />;
+        })}
+        <Redirect to="/admin" from="/"></Redirect>
+        <Redirect to="/404"></Redirect>
+      </Switch>
+
+    </Router>
+  </Provider>
+  ,
   document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+
 reportWebVitals();
+
+
+
