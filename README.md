@@ -1,3 +1,9 @@
+# 此工程是在学习https://www.bilibili.com/video/BV197411K737?p=20&spm_id_from=pageDriver 过程中搭建了，他使用了react和redux及封装了axios
+# 相关搭建过程的文字描述在https://blog.csdn.net/giiiig/article/details/121372154 blog里面
+# 这个应用和哔哩哔哩里面的还有点不同，哔哩哔哩里面的有的方法已经不兼容了，有以下改变
+# 哔哩哔哩翻页的实现和视频有所不同 total传参了，翻页已被antd封装了，无需实现
+# 哔哩哔哩新增跳转把onFinish变量放到了Edit函数里面，因为在外面无法定义props
+# 哔哩哔哩 19 react-redux里面store的创建方式改变了
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
